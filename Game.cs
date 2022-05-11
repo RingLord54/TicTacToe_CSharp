@@ -16,7 +16,7 @@ namespace TicTacToe
     {
         public static void Main(string[] args)
         {
-            string player, opponent, winner;
+            string player, opponent, winner, choice;
             Random rn = new Random();
 
             /* A While loop is used so that the Game can be played continuously after a game is
@@ -29,8 +29,7 @@ namespace TicTacToe
 
                 // Allows the User to choose if they wanted to be the Xs or the Os
                 Console.Write("\nDo you want to be the Xs or the Os (\"O\"= Os, \"X\" = Xs): ");
-                String choice = Console.ReadLine();
-
+                choice = Console.ReadLine();
                 if (choice.Equals("O") || choice.Equals("o"))
                 {
                     player = "O";
