@@ -45,13 +45,13 @@ namespace TicTacToe
                     playerTurn(board, player, opponent);
                     Utility.display(board);
                     Boolean playerWon = Utility.gameWon(board, player);
-                    if (playerWon == true)
+                    if (playerWon)
                     {
                         winner = "You are the winner! Congratulations";
                         break;
                     }
                     Boolean isFull = Utility.boardFull(board);
-                    if (isFull == true)
+                    if (isFull)
                     {
                         winner = "Nobody won! It's a draw";
                         break;
@@ -59,7 +59,7 @@ namespace TicTacToe
                     opponentTurn(board, player, opponent, rn);
                     Utility.display(board);
                     Boolean opponentWon = Utility.gameWon(board, opponent);
-                    if (opponentWon == true)
+                    if (opponentWon)
                     {
                         winner = "The opponent is the winner! Better luck next time!";
                         break;
