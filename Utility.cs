@@ -16,7 +16,9 @@ namespace TicTacToe
     internal class Utility
     {
         /// <summary>
-        /// 
+        /// This method is used to create an empty Game Board for the TicTacToe Game.<br></br>
+        /// It does this by creating 2D Array containing 3 normal string arrays, each of which<br></br>
+        /// also has a length of 3.
         /// </summary>
         /// <returns> The newly created empty 3x3 Game Board </returns>
         public static string[][] CreateBoard()
@@ -29,12 +31,13 @@ namespace TicTacToe
             {
                 for (int j = 0; j < board[i].Length; j++)
                 {
+                    // Every Board Space is made to hold a white space value
+                    // This allows the Board to be displayed properly while also being empty
                     board[i][j] = " ";
                 }
             }
             return board;
         }
-
 
 
 
