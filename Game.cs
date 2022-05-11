@@ -16,7 +16,7 @@ namespace TicTacToe
 
             while (true)
             {
-                string[][] board = Utility.createBoard();
+                string[][] board = Utility.CreateBoard();
 
                 Console.Write("\nDo you want to be the Xs or the Os (\"O\"= Os, \"X\" = Xs): ");
                 String choice = Console.ReadLine();
@@ -38,27 +38,27 @@ namespace TicTacToe
                 }
 
                 Console.WriteLine("You are using: " + player + "\nOpponent is using: " + opponent + "\n");
-                Utility.display(board);
+                Utility.Display(board);
 
                 while (true)
                 {
                     playerTurn(board, player, opponent);
-                    Utility.display(board);
-                    Boolean playerWon = Utility.gameWon(board, player);
+                    Utility.Display(board);
+                    Boolean playerWon = Utility.GameWon(board, player);
                     if (playerWon)
                     {
                         winner = "You are the winner! Congratulations";
                         break;
                     }
-                    Boolean isFull = Utility.boardFull(board);
+                    Boolean isFull = Utility.BoardFull(board);
                     if (isFull)
                     {
                         winner = "Nobody won! It's a draw";
                         break;
                     }
                     opponentTurn(board, player, opponent, rn);
-                    Utility.display(board);
-                    Boolean opponentWon = Utility.gameWon(board, opponent);
+                    Utility.Display(board);
+                    Boolean opponentWon = Utility.GameWon(board, opponent);
                     if (opponentWon)
                     {
                         winner = "The opponent is the winner! Better luck next time!";

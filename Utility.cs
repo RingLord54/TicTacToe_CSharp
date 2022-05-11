@@ -6,9 +6,20 @@ using System.Threading.Tasks;
 
 namespace TicTacToe
 {
+
+    /// <summary>
+    /// This Utility Class is used to store Methods that are used to help make<br></br>
+    /// the TicTacToe gamne work properly and efficiently. Therefore, the methods<br></br>
+    /// are placed within this class so that they don't clutter the main Game class file
+    /// </summary>
+
     internal class Utility
     {
-        public static string[][] createBoard()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns> The newly created empty 3x3 Game Board </returns>
+        public static string[][] CreateBoard()
         {
             string[][] board = new string[3][];
             board[0] = new string[3];
@@ -24,12 +35,15 @@ namespace TicTacToe
             return board;
         }
 
+
+
+
         /// <summary>
         /// This method is used to display the 3x3 Game Board to the User<br></br>
         /// and updating it when spaces are filled in with either "X"s or "O"s
         /// </summary>
         /// <param name="board"> The Current Game Board </param>
-        public static void display(string[][] board)
+        public static void Display(string[][] board)
         {
             // Numbers added to indicate numerical values associated with the columns
             Console.WriteLine("       0       1       2");
@@ -58,7 +72,7 @@ namespace TicTacToe
         /// If the Board is full - return true<br></br>
         /// If the Board idn't full - return false
         /// </returns>
-        public static Boolean boardFull(string[][] board)
+        public static Boolean BoardFull(string[][] board)
         {
             // Loops through all of the nine board spaces
             for (int i = 0; i < board.Length; i++)
@@ -86,7 +100,7 @@ namespace TicTacToe
         /// If the Player / Opponent has won - return true<br></br>
         /// If the Player / Opponent hasn't won - return false
         /// </returns>
-        public static Boolean gameWon(string[][] board, string value)
+        public static Boolean GameWon(string[][] board, string value)
         {
             /* Checks all of the possible winning combinations against either the "X" character or the "O" character
              * depending on the value of the "value" parameter, and if a winning combination is found then it returns
