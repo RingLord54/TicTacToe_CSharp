@@ -10,8 +10,7 @@ namespace TicTacToe
     {
         public static void Main(string[] args)
         {
-            string player, opponent;
-            string winner = null;
+            string player, opponent, winner;
             Random rn = new Random();
 
             while (true)
@@ -42,7 +41,7 @@ namespace TicTacToe
 
                 while (true)
                 {
-                    playerTurn(board, player, opponent);
+                    PlayerTurn(board, player, opponent);
                     Utility.Display(board);
                     Boolean playerWon = Utility.GameWon(board, player);
                     if (playerWon)
@@ -56,7 +55,7 @@ namespace TicTacToe
                         winner = "Nobody won! It's a draw";
                         break;
                     }
-                    opponentTurn(board, player, opponent, rn);
+                    OpponentTurn(board, player, opponent, rn);
                     Utility.Display(board);
                     Boolean opponentWon = Utility.GameWon(board, opponent);
                     if (opponentWon)
@@ -81,7 +80,7 @@ namespace TicTacToe
             }
         }
 
-        public static void playerTurn(string[][] board, string player, string opponent)
+        public static void PlayerTurn(string[][] board, string player, string opponent)
         {
             int row, column;
             do {
@@ -95,7 +94,7 @@ namespace TicTacToe
             board[row][column] = player;
         }
 
-        public static void opponentTurn(string[][] board, string player, string opponent, Random rn)
+        public static void OpponentTurn(string[][] board, string player, string opponent, Random rn)
         {
             int OpRow, OpCol;
             Console.WriteLine("\nOpponent's turn. Press any key to continue...");
