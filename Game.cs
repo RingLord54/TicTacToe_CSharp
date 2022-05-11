@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace TicTacToe
 {
+
+    /// <summary>
+    /// This class contains all the code for the main TicTacToe Game<br></br>
+    /// including some extra methods for User and Computer Turns
+    /// </summary>
+
     internal class Game
     {
         public static void Main(string[] args)
@@ -80,30 +86,69 @@ namespace TicTacToe
             }
         }
 
+
+
+        /// <summary>
+        /// This method is called in order to have the User carry out their turn
+        /// </summary>
+        /// <param name="board"> The Current Game Board </param>
+        /// <param name="player"> The User's Value being Used (X/O) </param>
+        /// <param name="opponent"> The Computer's Value being Used (X/O) </param>
         public static void PlayerTurn(string[][] board, string player, string opponent)
         {
+            // values for the row and column
             int row, column;
-            do {
+
+            /* A Do-While loop is used so that if the space on the board selected by the
+             * User has already been used by the User themselves or by the Computer, then 
+             * the User will have to enter another space on the board
+             */
+            do
+            {
                 Console.WriteLine("\nYour turn. Press any key to continue...");
                 Console.ReadKey();
                 Console.Write("\nEnter the row for your guess: ");
                 row = Convert.ToInt32(Console.ReadLine());
                 Console.Write("Enter the column for your guess: ");
                 column = Convert.ToInt32(Console.ReadLine());
+
             } while (board[row][column] == player || board[row][column] == opponent);
+
+            // Assigns the selected space on the Board with the User's Value.
             board[row][column] = player;
         }
+        
 
+
+        /// <summary>
+        /// This method is called in order to have the Opponent (Computer) carry<br></br>
+        /// out their turn in the Game.
+        /// </summary>
+        /// <param name="board"> The Current Game Board </param>
+        /// <param name="player"> The User's Value being used (X/O) </param>
+        /// <param name="opponent"> The Computer's Value being used (X/O) </param>
+        /// <param name="rn"> Random variable used to select a random free space on the board</param>
         public static void OpponentTurn(string[][] board, string player, string opponent, Random rn)
         {
+            // values for the row and column
             int OpRow, OpCol;
+
+            // Displays to the User that it's the Computer's Turn
             Console.WriteLine("\nOpponent's turn. Press any key to continue...");
             Console.ReadKey();
+
+            /* A Do-While loop is used so that if the randomly selected space on the board
+             * has already been used by the User or by the Computer itself, then it will make
+             * another random selection, until it selects one that's empty.
+             */
             do
             {
                 OpRow = rn.Next(0, 3);
                 OpCol = rn.Next(0, 3);
+
             } while (board[OpRow][OpCol] == player || board[OpRow][OpCol] == opponent);
+
+            // Assigns the selected space on the Board with the Computer's Value
             board[OpRow][OpCol] = opponent; 
         }
     }
