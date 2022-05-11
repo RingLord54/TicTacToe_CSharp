@@ -13,7 +13,7 @@ namespace TicTacToe
     /// are placed within this class so that they don't clutter the main Game class file
     /// </summary>
 
-    internal class Utility
+    internal class Game_Utility
     {
         /// <summary>
         /// This method is used to create an empty Game Board for the TicTacToe Game.<br></br>
