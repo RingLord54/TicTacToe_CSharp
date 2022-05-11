@@ -19,10 +19,15 @@ namespace TicTacToe
             string player, opponent, winner;
             Random rn = new Random();
 
+            /* A While loop is used so that the Game can be played continuously after a game is
+             * finished, unless the User decides not to play another Game after the finish one
+             */
             while (true)
             {
+                // Holds the newly created Game Board
                 string[][] board = Game_Utility.CreateBoard();
 
+                // Allows the User to choose if they wanted to be the Xs or the Os
                 Console.Write("\nDo you want to be the Xs or the Os (\"O\"= Os, \"X\" = Xs): ");
                 String choice = Console.ReadLine();
 
@@ -38,50 +43,69 @@ namespace TicTacToe
                 }
                 else
                 {
-                    player = "X";
-                    opponent = "O";
+                    // If Poor Data is entered
+                    player = "X";    // By Default the User will be assigned X
+                    opponent = "O";  // By Default the Computer will be assigned O
                 }
 
+                // Displays to the User what they are using and what the Computer is Using
                 Console.WriteLine("You are using: " + player + "\nOpponent is using: " + opponent + "\n");
                 Game_Utility.Display(board);
 
                 while (true)
                 {
-                    PlayerTurn(board, player, opponent);
-                    Game_Utility.Display(board);
-                    Boolean playerWon = Game_Utility.GameWon(board, player);
+                    PlayerTurn(board, player, opponent); // User's Turn
+                    Game_Utility.Display(board); // Displays the Board
+                    Boolean playerWon = Game_Utility.GameWon(board, player); // Checks to see if the User has won on their turn
+                    // If the User did win they will be congratulated, and the Game ends
                     if (playerWon)
                     {
                         winner = "You are the winner! Congratulations";
                         break;
                     }
+
+                    /* The Board is only checked to see if it's full after the User's turn
+                     * because seeing as how the User goes first, then the situation of a full
+                     * Board will only occur after the User's 5th Turn
+                     */
+
+                    // Board is checked after the User's Turn to see if the Board is full
                     Boolean isFull = Game_Utility.BoardFull(board);
+                    // If the Board is full then the Game ends and it's marked as a draw
                     if (isFull)
                     {
                         winner = "Nobody won! It's a draw";
                         break;
                     }
-                    OpponentTurn(board, player, opponent, rn);
-                    Game_Utility.Display(board);
-                    Boolean opponentWon = Game_Utility.GameWon(board, opponent);
+
+                    OpponentTurn(board, player, opponent, rn); // Computer's Turn
+                    Game_Utility.Display(board); // Displays the Board
+                    Boolean opponentWon = Game_Utility.GameWon(board, opponent); // Checks to see if the Computer has won on its turn
+                    // If the Computer did win, it will be congratulated and the Game ends
                     if (opponentWon)
                     {
                         winner = "The opponent is the winner! Better luck next time!";
                         break;
                     }
                 }
+
+                // Winning message is displayed
                 Console.WriteLine("\n" + winner);
                 Console.WriteLine("Thank you for playing the game!");
+
+                // User is prompted if they want to play the Game again
                 Console.WriteLine("\nDo you want to play again? \"Yes\" or \"No\": ");
                 string select = Console.ReadLine();
-                if (select.Equals("Yes") || select.Equals("yes")) {
-                    continue;
+                if (select.Equals("Yes") || select.Equals("yes")) 
+                {
+                    continue; // If the User says Yes, the Game will be played again
                 }
-                else if (select.Equals("No") || select.Equals("no")) {
-                    break;
+                else if (select.Equals("No") || select.Equals("no")) 
+                {
+                    break; // If the User says No, then the Game Ends
                 }
                 else {
-                    break;
+                    break; // By Default the Game will end
                 }
             }
         }
