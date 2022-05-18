@@ -42,7 +42,6 @@ namespace TicTacToe
                 }
                 else
                 {
-                    // If Poor Data is entered
                     player = "X";    // By Default the User will be assigned X
                     opponent = "O";  // By Default the Computer will be assigned O
                 }
