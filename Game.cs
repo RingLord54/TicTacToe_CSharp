@@ -127,12 +127,26 @@ namespace TicTacToe
              */
             do
             {
-                Console.WriteLine("\nYour turn. Press any key to continue...");
-                Console.ReadKey();
-                Console.Write("\nEnter the row for your guess: ");
-                row = Convert.ToInt32(Console.ReadLine());
-                Console.Write("Enter the column for your guess: ");
-                column = Convert.ToInt32(Console.ReadLine());
+                // second do-while loop added to ensure valid input
+                do
+                {
+                    Console.WriteLine("\nYour turn. Press any key to continue...");
+                    Console.ReadKey();
+
+                    Console.Write("\nEnter the row for your guess: ");
+                    while (!int.TryParse(Console.ReadLine(), out row))
+                    {
+                        Console.WriteLine("Please enter a valid row value!");
+                        Console.Write("\nEnter the row for your guess: ");
+                    }
+
+                    Console.Write("Enter the column for your guess: ");
+                    while (!int.TryParse(Console.ReadLine(), out column))
+                    {
+                        Console.WriteLine("Please enter a valid column value!");
+                        Console.Write("\nEnter the column for your guess: ");
+                    }
+                } while (row < 0 || row > 2 || column < 0 || column > 2);
 
             } while (board[row][column] == player || board[row][column] == opponent);
 
