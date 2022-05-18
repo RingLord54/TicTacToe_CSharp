@@ -106,6 +106,9 @@ namespace TicTacToe
                     break; // By Default the Game will end
                 }
             }
+
+            Console.WriteLine("Thank you for playing TicTacToe!");
+
         }
 
 
